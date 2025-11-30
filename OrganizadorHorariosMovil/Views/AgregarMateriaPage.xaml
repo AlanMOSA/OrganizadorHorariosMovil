@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="OrganizadorHorariosMovil.Views.AgregarMateriaPage"  
+            xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            Title="Agregar Materia">  
+
+   <ScrollView>  
+       <VerticalStackLayout Spacing="15" Padding="20">  
+
+           <!-- Título -->  
+           <Label Text="AGREGAR MATERIA"   
+                  FontSize="18"   
+                  FontAttributes="Bold"   
+                  HorizontalOptions="Center"   
+                  TextColor="DarkBlue" />  
+
+           <!-- Campo: Nombre de la Materia -->  
+           <VerticalStackLayout Spacing="5">  
+               <Label Text="Nombre de la Materia:"   
+                      FontSize="14"   
+                      FontAttributes="Bold" />  
+               <Entry x:Name="txtMateria"   
+                      Placeholder="Ej: Matemáticas"   
+                      BackgroundColor="White"  
+                      TextColor="Black" />  
+           </VerticalStackLayout>  
+
+           <!-- Campo: Nombre del Maestro -->  
+           <VerticalStackLayout Spacing="5">  
+               <Label Text="Nombre del Maestro:"   
+                      FontSize="14"   
+                      FontAttributes="Bold" />  
+               <Entry x:Name="txtMaestro"   
+                      Placeholder="Ej: Prof. García"   
+                      BackgroundColor="White"  
+                      TextColor="Black" />  
+           </VerticalStackLayout>  
+
+           <!-- Campo: Día de la semana -->  
+           <VerticalStackLayout Spacing="5">  
+               <Label Text="Día de la semana:"   
+                      FontSize="14"   
+                      FontAttributes="Bold" />  
+               <Picker x:Name="cmbDia"  
+                       Title="Selecciona un día"  
+                       BackgroundColor="White"  
+                       TextColor="Black">  
+                   <Picker.Items>  
+                       <x:String>LUNES</x:String>  
+                       <x:String>MARTES</x:String>  
+                       <x:String>MIERCOLES</x:String>  
+                       <x:String>JUEVES</x:String>  
+                       <x:String>VIERNES</x:String>  
+                   </Picker.Items>  
+               </Picker>  
+           </VerticalStackLayout>  
+
+           <!-- Campo: Hora de inicio -->  
+           <VerticalStackLayout Spacing="5">  
+               <Label Text="Hora de inicio:"   
+                      FontSize="14"   
+                      FontAttributes="Bold" />  
+               <Picker x:Name="cmbHoraInicio"  
+                       Title="Selecciona la hora"  
+                       BackgroundColor="White"  
+                       TextColor="Black"  
+                       SelectedIndexChanged="OnHoraInicioChanged">  
+                   <Picker.Items>  
+                       <x:String>7:00 a 7:50</x:String>  
+                       <x:String>7:50 a 8:40</x:String>  
+                       <x:String>8:40 a 9:30</x:String>  
+                       <x:String>9:30 a 10:20</x:String>  
+                       <x:String>10:40 a 11:30</x:String>  
+                       <x:String>11:30 a 12:20</x:String>  
+                       <x:String>12:20 a 13:10</x:String>  
+                       <x:String>13:10 a 14:00</x:String>  
+                   </Picker.Items>  
+               </Picker>  
+           </VerticalStackLayout>  
+
+           <!-- Campo: Duración -->  
+           <VerticalStackLayout Spacing="5">  
+               <Label Text="Duración (horas):"   
+                      FontSize="14"   
+                      FontAttributes="Bold" />  
+               <Picker x:Name="cmbDuracion"  
+                       Title="Selecciona duración"  
+                       BackgroundColor="White"  
+                       TextColor="Black"  
+                       SelectedIndexChanged="OnDuracionChanged">  
+                   <Picker.Items>  
+                       <x:String>1 hora</x:String>  
+                       <x:String>2 horas</x:String>  
+                       <x:String>3 horas</x:String>  
+                   </Picker.Items>  
+               </Picker>  
+           </VerticalStackLayout>  
+
+           <!-- Hora de fin calculada -->  
+           <Border BackgroundColor="LightBlue"   
+                   Padding="10"   
+                   StrokeShape="Rectangle">  
+               <Label x:Name="lblHoraFin"   
+                      Text="Hora de fin: --"   
+                      FontSize="14"   
+                      FontAttributes="Bold"   
+                      TextColor="DarkBlue"  
+                      HorizontalOptions="Center" />  
+           </Border>  
+
+           <!-- Botones -->  
+           <Grid ColumnDefinitions="*,*" ColumnSpacing="15">  
+               <Button Grid.Column="0"   
+                       Text="Agregar"   
+                       BackgroundColor="Green"   
+                       TextColor="White"  
+                       FontAttributes="Bold"  
+                       Clicked="OnAgregarClicked" />  
+
+               <Button Grid.Column="1"   
+                       Text="Cancelar"   
+                       BackgroundColor="LightGray"   
+                       TextColor="Black"  
+                       Clicked="OnCancelarClicked" />  
+           </Grid>  
+
+       </VerticalStackLayout>  
+   </ScrollView>  
+
+</ContentPage>

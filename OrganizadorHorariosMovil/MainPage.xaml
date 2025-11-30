@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="OrganizadorHorariosMovil.MainPage"  
+            xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            Title="Organizador de Horarios">  
+
+   <ScrollView>  
+       <VerticalStackLayout Spacing="20" Padding="20">  
+
+           <!-- Título -->  
+           <Label Text="ORGANIZADOR DE HORARIOS"   
+                  FontSize="20"   
+                  FontAttributes="Bold"   
+                  HorizontalOptions="Center"   
+                  TextColor="DarkBlue" />  
+
+           <!-- Botones de acción -->  
+           <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="10">  
+               <Button Grid.Column="0"   
+                       Text="➕ Agregar"   
+                       BackgroundColor="DodgerBlue"   
+                       TextColor="White"  
+                       FontAttributes="Bold"  
+                       Clicked="OnAgregarClicked" />  
+
+               <Button Grid.Column="1"   
+                       Text="🗑️ Limpiar"   
+                       BackgroundColor="OrangeRed"   
+                       TextColor="White"  
+                       Clicked="OnLimpiarClicked" />  
+
+               <Button Grid.Column="2"   
+                       Text="💾 Exportar"   
+                       BackgroundColor="ForestGreen"   
+                       TextColor="White"  
+                       FontAttributes="Bold"  
+                       Clicked="OnExportarClicked" />  
+
+               <Button Grid.Column="3"   
+                       Text="👁️ Vista Previa"   
+                       BackgroundColor="Purple"   
+                       TextColor="White"  
+                       FontAttributes="Bold"  
+                       Clicked="OnVistaPreviaClicked" />  
+           </Grid>  
+
+           <!-- Contador de materias -->  
+           <Label x:Name="lblContador"   
+                  Text="Materias agregadas: 0"   
+                  FontSize="14"   
+                  TextColor="DarkGreen"   
+                  HorizontalOptions="Start" />  
+
+           <!-- Horario como tabla -->  
+           <Border BackgroundColor="White"   
+                   Stroke="LightGray"   
+                   StrokeThickness="1"   
+                   Padding="10">  
+               <ScrollView HorizontalScrollBarVisibility="Always">  
+                   <Grid x:Name="gridHorario"   
+                         ColumnSpacing="1"   
+                         RowSpacing="1"  
+                         HorizontalOptions="Start" />  
+               </ScrollView>  
+           </Border>  
+
+       </VerticalStackLayout>  
+   </ScrollView>  
+
+</ContentPage>
