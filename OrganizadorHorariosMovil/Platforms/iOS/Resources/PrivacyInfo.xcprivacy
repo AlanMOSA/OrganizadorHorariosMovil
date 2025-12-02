@@ -16,6 +16,8 @@ More information: https://aka.ms/maui-privacy-manifest
             <key>NSPrivacyAccessedAPIType</key>
             <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
             <key>NSPrivacyAccessedAPITypeReasons</key>
+			<key>NSPhotoLibraryUsageDescription</key>
+			<string>La aplicación necesita acceso para guardar imágenes del horario</string> <!-- Example description-->
             <array>
                 <string>C617.1</string>
             </array>

@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using OrganizadorHorariosMovil.Services;
+using OrganizadorHorariosMovil.ViewModels;
+using OrganizadorHorariosMovil.Views;
 
 namespace OrganizadorHorariosMovil
 {
@@ -15,11 +18,16 @@ namespace OrganizadorHorariosMovil
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            // Registrar servicios
+            builder.Services.AddSingleton<IScreenshotService, MauiScreenshotService>();
+            builder.Services.AddSingleton<HorarioViewModel>();
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<AgregarMateriaPage>();
+            builder.Services.AddTransient<VistaPreviaPage>();
+
 
             return builder.Build();
         }
     }
+
 }

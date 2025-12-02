@@ -1,18 +1,21 @@
 ﻿using OrganizadorHorariosMovil.ViewModels;
 using OrganizadorHorariosMovil.Views;
+using OrganizadorHorariosMovil.Services;
 
 namespace OrganizadorHorariosMovil
 {
     public partial class MainPage : ContentPage
     {
         private HorarioViewModel _viewModel;
+        private readonly IScreenshotService _screenshotService;
 
-          public MainPage()
+        public MainPage(HorarioViewModel viewModel, IScreenshotService screenshotService)
         {
             InitializeComponent();
-            _viewModel = new HorarioViewModel();
+            _viewModel = viewModel;
+            _screenshotService = screenshotService;
             BindingContext = _viewModel;
-            
+
             ConfigurarHorario();
         }
 
@@ -212,7 +215,49 @@ namespace OrganizadorHorariosMovil
 
         private async void OnExportarClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Exportar", "Funcionalidad de exportación en desarrollo", "OK");
+            try
+            {
+                // Mostrar indicador de carga
+                await DisplayAlert("Exportando", "Generando imagen del horario...", "OK");
+
+                // Capturar y guardar la imagen
+                var filePath = await _screenshotService.CaptureAndSaveAsync(this);
+
+                if (!string.IsNullOrEmpty(filePath))
+                {
+                    // Mostrar opciones para compartir
+                    await ShareImage(filePath);
+                }
+                else
+                {
+                    await DisplayAlert("Error", "No se pudo generar la imagen", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Error al exportar: {ex.Message}", "OK");
+            }
+        }
+
+        private async Task ShareImage(string filePath)
+        {
+            var options = new ShareFileRequest
+            {
+                Title = "Compartir Horario",
+                File = new ShareFile(filePath)
+            };
+
+            try
+            {
+                await Share.Default.RequestAsync(options);
+            }
+            catch (Exception ex)
+            {
+                // Si no se puede compartir, mostrar mensaje de éxito
+                await DisplayAlert("Éxito",
+                    $"Horario exportado como imagen en:\n{filePath}",
+                    "OK");
+            }
         }
 
         private async void OnVistaPreviaClicked(object sender, EventArgs e)
