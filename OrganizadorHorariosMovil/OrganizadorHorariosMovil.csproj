@@ -60,8 +60,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Build.Tasks" Version="9.0.14" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.14" />
+		<PackageReference Include="Microsoft.Maui.Controls.Core" Version="9.0.14" />
+		<PackageReference Include="Microsoft.Maui.Controls.Xaml" Version="9.0.14" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.14" />
 		<PackageReference Include="SkiaSharp" Version="3.119.1" />
 	</ItemGroup>
 
@@ -69,6 +73,10 @@
 	  <MauiXaml Update="Views\AgregarMateriaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="10.0.11" />
 	</ItemGroup>
 
 </Project>

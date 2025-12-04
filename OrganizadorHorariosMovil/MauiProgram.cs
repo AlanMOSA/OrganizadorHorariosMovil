@@ -19,7 +19,7 @@ namespace OrganizadorHorariosMovil
                 });
 
             // Registrar servicios
-            builder.Services.AddSingleton<IScreenshotService, MauiScreenshotService>();
+            builder.Services.AddSingleton<IScreenshotService, GridScreenshotService>();
             builder.Services.AddSingleton<HorarioViewModel>();
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<AgregarMateriaPage>();
